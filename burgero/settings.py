@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-e-51rbq4$2pn1@*cgk4gx&=e-a1u_o$bxw*)y$l%w#pq33dy0m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'wallet',
     'compressor',
 ]
-
 
 COMPRESS_ROOT = BASE_DIR / 'static'
 
@@ -104,6 +103,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://burgero.onrender.com/','https://*.127.0.0.1']
 
 
 # Password validation
