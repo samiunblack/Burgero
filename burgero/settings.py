@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import environ
+import dj_database_url
+
 env = environ.Env()
 environ.Env.read_env()
 
@@ -42,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'accounts',
     'food',
+    'accounts',
     'order',
     'review',
     'wallet',
@@ -97,11 +99,13 @@ WSGI_APPLICATION = 'burgero.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default="postgres://phi_data_user:osJieSVW3Ol5TtxUSqFFtqQDwgaf4Egw@dpg-cmal0iv109ks73ffu9u0-a.oregon-postgres.render.com/phi_data",
+        conn_max_age=600
+    )
 }
+
 
 CSRF_TRUSTED_ORIGINS = ['https://burgero.onrender.com/','https://*.127.0.0.1']
 
