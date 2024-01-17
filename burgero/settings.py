@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'burgero.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default="postgres://burgero_user:pXG5lqppis9ZIpscwvOOmvMC40NBCxAH@dpg-cmjs63md3nmc73cl09u0-a.oregon-postgres.render.com/burgero",
+        default="postgres://burgero_ljnc_user:lnGdoL2fRij6qoU6H8NrTrIayfIfPyce@dpg-cmjsq0mn7f5s73ceula0-a.oregon-postgres.render.com/burgero_ljnc",
         conn_max_age=600
     )
 }
