@@ -39,6 +39,13 @@ class UserRegistrationView(FormView):
         email.send()
         messages.success(self.request, "Check your mail for confirmation.")
         return redirect("login")
+    
+    def form_invalid(self, form):
+        error_dict = form.errors.as_data()
+        if error_dict:
+            error_message = error_dict.popitem()[1][0].message
+            messages.error(self.request, error_message)
+        return super().form_invalid(form)
 
 
 def activate(request, uid64, token):
@@ -71,7 +78,6 @@ class UserLoginView(LoginView):
             login(self.request, user)
             return redirect("profile")
         else:
-            print("Error occured")
             return render(self.request, self.template_name, {'form': form, 'error_message': 'Invalid login credentials'})
     
 
